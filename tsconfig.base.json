@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@portfoliosite/ui":["portfoliosite/src/index.ts"],
+      "@portfoliosite/orders": ["orders/src/index.ts"],
+      "@portfoliosite/products": ["products/src/index.ts"],
+      "@portfoliosite/users": ["users/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
