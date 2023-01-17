@@ -1,0 +1,42 @@
+<div class="admin-page">
+    <p-card header="Categoris" subheader="List of all categoris">
+        <div class="p-grid">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+                        <p-button label="Click" icon="pi pi-check" iconPos="left"></p-button>
+
+                    </div>
+                    <div class="p-toolbar-group-right">
+       <!--                 
+                        <p-button styleClass="p-button-primary p-mr-2" [label]="editmode ? 'Update' : 'Create'" icon="pi pi-plus"(click)="onSubmit()"></p-button>
+                        <p-button styleClass="p-button-secondary" label="Cancle" icon="pi pi-arrow-circle-left" (click)="onCancle()"></p-button>
+      -->
+                    </div>
+                  </p-toolbar>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class ="p-col-12">
+                <p-table [value]="categories" styleClass="p-datatable-gridlines">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>icon</th>
+                            <th>color</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-categories>
+                        <tr>
+                            <td>{{categories.id}}</td>
+                            <td>{{categories.name}}</td>
+                            <td>{{categories.icon}}</td>
+                            <td>{{categories.colot}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table> 
+            </div>
+        </div>
+    </p-card>
+</div>

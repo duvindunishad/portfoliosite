@@ -8,8 +8,21 @@ import { appRoutes } from './app.routes';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
 
+import {CardModule} from 'primeng/card';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
+import { Category } from 'products/src';
 
+const UX_MODULE = [
+  CardModule,
+  ToolbarModule,
+  ButtonModule,
+  TableModule,
+]
 
 const Routes: Routes = [
   { 
@@ -19,17 +32,22 @@ const Routes: Routes = [
     {
       path: 'dashboard',
       component: DashboardComponent
+    },
+    {
+      path: 'categories',
+      component: CategoriesListComponent
     }
   ]
  }
 ];
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ShellComponent, SidebarComponent],
+  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }),
+    HttpClientModule,
+    RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }),UX_MODULE,
   ],
-  providers: [],
+  providers: [Category],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
