@@ -28,10 +28,8 @@ import { CategoriesFormComponent } from './categories/categories-form/categories
 //import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 //import { JwtInterceptor, UsersModule } from 'users/src';
 
-
 import { CategoriesService } from 'products/src';
 
-import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
@@ -50,7 +48,7 @@ import { CategoriesFormsComponent } from './categories/categories-forms/categori
 //import { StoreModule } from '@ngrx/store';
 //import { EffectsModule } from '@ngrx/effects';
 import {InputTextModule} from 'primeng/inputtext';
-
+import {ToastModule} from 'primeng/toast';
 
 const UX_MODULE = [
   CardModule,
@@ -110,12 +108,13 @@ const Routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }), UX_MODULE,
 
   ],
-  providers: [Category],
+  providers: [Category, CategoriesService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
