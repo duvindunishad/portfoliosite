@@ -31,7 +31,7 @@ import { CategoriesFormComponent } from './categories/categories-form/categories
 import { CategoriesService } from 'products/src';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
@@ -49,6 +49,7 @@ import { CategoriesFormsComponent } from './categories/categories-forms/categori
 //import { EffectsModule } from '@ngrx/effects';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 const UX_MODULE = [
   CardModule,
@@ -114,7 +115,7 @@ const Routes: Routes = [
     RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }), UX_MODULE,
 
   ],
-  providers: [Category, CategoriesService, MessageService],
+  providers: [Category, CategoriesService, MessageService,ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
