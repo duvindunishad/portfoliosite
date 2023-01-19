@@ -10,18 +10,65 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Category } from 'products/src';
+import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+
+//import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+//import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+//import { UsersListComponent } from './pages/users/users-list/users-list.component';
+//import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+//import { JwtInterceptor, UsersModule } from 'users/src';
+
+
+import { CategoriesService } from 'products/src';
+
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { EditorModule } from 'primeng/editor';
+import { TagModule } from 'primeng/tag';
+import { InputMaskModule } from 'primeng/inputmask';
+//import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+//import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CategoriesFormsComponent } from './categories/categories-forms/categories-forms.component';
+//import { AppRoutingModule } from './app-routing.module';
+//import { StoreModule } from '@ngrx/store';
+//import { EffectsModule } from '@ngrx/effects';
+import {InputTextModule} from 'primeng/inputtext';
+
 
 const UX_MODULE = [
   CardModule,
+  ToastModule,
+  InputTextModule,
+  TableModule,
   ToolbarModule,
   ButtonModule,
-  TableModule,
+  ConfirmDialogModule,
+  ColorPickerModule,
+  InputNumberModule,
+  DropdownModule,
+  InputTextareaModule,
+  InputSwitchModule,
+  EditorModule,
+  TagModule,
+  InputMaskModule,
+  FieldsetModule
 ]
 
 const Routes: Routes = [
@@ -36,16 +83,37 @@ const Routes: Routes = [
     {
       path: 'categories',
       component: CategoriesListComponent
+    },
+    {
+      path: 'categories/categories-forms',
+      component: CategoriesFormsComponent
     }
   ]
  }
 ];
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent],
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    ShellComponent,
+    DashboardComponent,
+    CategoriesListComponent,
+    CategoriesFormComponent,
+    CategoriesFormsComponent,
+  //  ProductsListComponent,
+ //   ProductsFormComponent,
+ //   UsersListComponent,
+ //   UsersFormComponent,
+ //   OrdersListComponent,
+ //   OrdersDetailComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }),UX_MODULE,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }), UX_MODULE,
+
   ],
   providers: [Category],
   bootstrap: [AppComponent],
