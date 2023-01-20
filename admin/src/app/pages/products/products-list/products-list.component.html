@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <div class="admin-page">
-    <p-card header="Categoris" subheader="List of all categoris">
+    <p-card header="Porducts" subheader="List of all Porducts">
         <div class="p-grid">
             <div class="p-col-12">
                 <p-toolbar>
@@ -21,37 +21,45 @@
         </div>
         <div class="p-grid">
             <div class ="p-col-12">
-                <p-table [value]="categories" styleClass="p-datatable-gridlines">
+                <p-table [value]="products" styleClass="p-datatable-gridlines">
                     <ng-template pTemplate="header">
                         <tr>
                             <!-- <th>id</th> -->
-                            <th pSortableColumn="name">name<p-sortIcon field="name"></p-sortIcon></th>
-                            <th>icon</th>
-                            <th>Color</th>
+                            <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                            <th>image</th>
+                            <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
+                            <th pSortableColumn="stock">Stock<p-sortIcon field="stock"></p-sortIcon></th>
+                            <th pSortableColumn="category">Category<p-sortIcon field="category"></p-sortIcon></th>
+                            <th pSortableColumn="dateCreated">Created at<p-sortIcon field="dateCreated"></p-sortIcon></th>
                             <th></th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-categories>
+                    <ng-template pTemplate="body" let-products>
                         <tr>
                             <!-- <td>{{categories.id}}</td> -->
-                            <td>{{categories.name}}</td>
-                            <td><i style ="font-size: 2rem;"class="pi" [ngClass]="'pi-'+ categories.icon"></i></td>
-                            <td>{{categories.color}}</td>
+                            <td>{{products.name}}</td>
+                            <td>{{products.image}}</td>
+                            <td>{{products.price}}</td>
+                            <td>{{products.countInStock}}</td>
+                            <td>{{products.category.name}}</td>
+                            <td>{{products.dateCreated}}</td>
                             <td>
                                 
-                            <p-button 
-                            (onClick)="deleteCategory(categories.id)"
+                            <!-- 
+                                <p-button 
+                            (onClick)="deletePorduct(Porduct.id)"
                             styleClass="p-button-danger mr-2" 
                             icon="pi pi-trash" 
                             >
                             </p-button>
                             
                             <p-button 
-                            (onClick)="updateCategory(categories.id)"
+                            (onClick)="updatePorduct(Porduct.id)"
                             styleClass="p-button-error"
                             icon="pi pi-pencil" 
                             >
-                            </p-button>
+                            </p-button> 
+                        -->
 
                             </td>
                         </tr>

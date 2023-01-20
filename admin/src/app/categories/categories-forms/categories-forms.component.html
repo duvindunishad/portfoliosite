@@ -34,6 +34,10 @@
                                 <input formControlName="icon" id="icon" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                                 <small *ngIf="categoryForm['icon'].invalid && isSubmitted" class="p-error">icon is required</small>
                             </div>
+                            <div class="p-colorPicker">
+                                <label for="color">Color</label><br><br>
+                                <p-colorPicker formControlName="color"></p-colorPicker>
+                            </div>
                         </div>
                     </div>
                     

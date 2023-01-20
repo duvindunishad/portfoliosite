@@ -18,7 +18,7 @@ export class CategoriesFormsComponent implements OnInit {
   'form':FormGroup;
   isSubmitted = false;
   editmode = false;
-  'currentCategoryID': string;
+  'currentCategoryId': string;
 
   constructor(
     private messageService: MessageService, 
@@ -31,7 +31,8 @@ export class CategoriesFormsComponent implements OnInit {
   ngOnInit(): void{
     this.form = this.formBuilder.group({
       name: ['',Validators.required],
-      icon: ['',Validators.required]
+      icon: ['',Validators.required],
+      color: ['#fff']
     });
     this._checkEditMode();
   }
@@ -42,9 +43,10 @@ export class CategoriesFormsComponent implements OnInit {
     }
 
     const category : Category = {
-      id: this.currentCategoryID,
+      id: this.currentCategoryId,
       name: this.categoryForm['name'].value,
-      icon: this.categoryForm['icon'].value
+      icon: this.categoryForm['icon'].value,
+      color: this.categoryForm['color'].value
     };
     if(this.editmode){
       this._updateCategory(category)
@@ -56,7 +58,7 @@ export class CategoriesFormsComponent implements OnInit {
 
   private _addCategory(category: Category){
 
-    this.CategoriesService.createCategory(category).subscribe((response) => {
+    this.CategoriesService.createCategory(category).subscribe((category) => {
       this.messageService.add(
         {severity:'success', 
         summary:'success', 
@@ -79,10 +81,11 @@ export class CategoriesFormsComponent implements OnInit {
     this.route.params.subscribe(params => {
       if(params['id']){
         this.editmode =true;
-        this.currentCategoryID = params['id']
+        this.currentCategoryId = params['id']
         this.CategoriesService.getCategory(params['id']).subscribe(category =>{
           this.categoryForm['name'].setValue(category['name']);
           this.categoryForm['icon'].setValue(category['icon']);
+          this.categoryForm['color'].setValue(category['color']);
         });
       }
     });

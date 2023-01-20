@@ -20,8 +20,8 @@ export class CategoriesService {
   createCategory(category: Category): Observable<Category[]> {
     return this.http.post<Category[]>('http://localhost:3000/api/v1/categories', category)
   }
-  deleteCategory(categoriesId: string): Observable<'Object'> {
-    return this.http.delete<'Object'>(`http://localhost:3000/api/v1/categories/${categoriesId}`)
+  deleteCategory(categoriesId: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/api/v1/categories/${categoriesId}`)
   }
   updateCategory(category: Category): Observable<Category[]> {
     return this.http.put<Category[]>('http://localhost:3000/api/v1/categories/:'+ category['id'], category);
