@@ -18,7 +18,8 @@ export class CategoriesListComponent implements OnInit{
   constructor(
     private CategoriesService: CategoriesService, 
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router:Router
     ){}
   ngOnInit(): void {
     this._getCategories()
@@ -52,6 +53,10 @@ deleteCategory(categoriesId : string) {
      }
 });
 
+}
+
+updateCategory(categoriesId: string){
+  this.router.navigateByUrl(`categories/categories-forms/${categoriesId}`)
 }
 
 private _getCategories(){

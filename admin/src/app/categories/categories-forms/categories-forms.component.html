@@ -1,11 +1,11 @@
 <p-toast></p-toast>
 <div class="admin-page">
-    <p-card header="Add Category" subheader="Here can create new category">
+    <p-card [header]="editmode ? 'Edit Category Here':'Add Category'" subheader="Here can create or update category">
         <div class="p-grid">
             <div class="p-col-12">
                 <p-toolbar><div class="p-toolbar-group-left"></div>
                     <div class="p-toolbar-group-right">
-                        <p-button styleClass="p-button-primary" style="padding: 10px;" label="Create" icon="pi pi-plus" iconPos="left" (onClick)="onSubmit()" ></p-button>
+                        <p-button styleClass="p-button-primary mr-2" [label]="editmode ? 'Update':'Create'" icon="pi pi-plus" iconPos="left" (onClick)="onSubmit()" ></p-button>
                         <p-button styleClass="p-button-secondary" label="Cancle"  iconPos="left" ></p-button>
                     </div>
        <!--                 

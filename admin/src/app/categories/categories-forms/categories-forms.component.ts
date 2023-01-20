@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { CategoriesService, Category } from 'products/src';
 import { timer } from 'rxjs';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'admin-categories-forms',
@@ -16,9 +17,15 @@ export class CategoriesFormsComponent implements OnInit {
 
   'form':FormGroup;
   isSubmitted = false;
+  editmode = false;
+  'currentCategoryID': string;
 
-  constructor(private messageService: MessageService, private formBuilder: FormBuilder, private CategoriesService: CategoriesService,
-    private location: Location
+  constructor(
+    private messageService: MessageService, 
+    private formBuilder: FormBuilder, 
+    private CategoriesService: CategoriesService,
+    private location: Location,
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void{
@@ -26,6 +33,7 @@ export class CategoriesFormsComponent implements OnInit {
       name: ['',Validators.required],
       icon: ['',Validators.required]
     });
+    this._checkEditMode();
   }
   onSubmit(){
     this.isSubmitted = true;
@@ -34,22 +42,73 @@ export class CategoriesFormsComponent implements OnInit {
     }
 
     const category : Category = {
+      id: this.currentCategoryID,
       name: this.categoryForm['name'].value,
       icon: this.categoryForm['icon'].value
+    };
+    if(this.editmode){
+      this._updateCategory(category)
+    }else{
+      this._addCategory(category)
     }
-    this.CategoriesService.createCategory(category).subscribe(Response => {
-      this.messageService.add({severity:'success', summary:'success', detail:'Category created succesfuly'});
-      timer(2000).toPromise().then(done =>{
+
+  }
+
+  private _addCategory(category: Category){
+
+    this.CategoriesService.createCategory(category).subscribe((response) => {
+      this.messageService.add(
+        {severity:'success', 
+        summary:'success', 
+        detail:'Category created succesfuly'});
+      timer(2000).toPromise().then((done) =>{
         this.location.back();
-      })
+      });
+    },
+    (error)=>
+    {
+      this.messageService.add(
+        {severity:'error', 
+        summary:'error', 
+        detail:'Category not created'});
+    }
+    );
+  }
+
+  private _checkEditMode(){
+    this.route.params.subscribe(params => {
+      if(params['id']){
+        this.editmode =true;
+        this.currentCategoryID = params['id']
+        this.CategoriesService.getCategory(params['id']).subscribe(category =>{
+          this.categoryForm['name'].setValue(category['name']);
+          this.categoryForm['icon'].setValue(category['icon']);
+        });
+      }
+    });
+  }
+
+  private _updateCategory(category: Category){
+
+    this.CategoriesService.updateCategory(category).subscribe((response) => {
+      this.messageService.add(
+        {severity:'success', 
+        summary:'success', 
+        detail:'Category update succesfuly'});
+      timer(2000).toPromise().then((done) =>{
+        this.location.back();
+      });
       //have to build
     },
     (error)=>
     {
-      this.messageService.add({severity:'error', summary:'error', detail:'Category not created'});
+      this.messageService.add(
+        {severity:'error', 
+        summary:'error', 
+        detail:'Category not updated'
     });
+    })
   }
-
   get categoryForm(){
     return this.form.controls;
   }
