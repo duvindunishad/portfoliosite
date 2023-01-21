@@ -14,4 +14,5 @@ export class Porduct {
   numReviews?: number;
   isFeatured?: boolean;
   dateCreated?: string;
+  createProduct: any;
   }  

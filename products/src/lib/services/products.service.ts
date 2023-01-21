@@ -17,9 +17,9 @@ export class ProductsServices {
   // getproduct(productsId : string): Observable<Porduct>{
   //   return this.http.get<Porduct>(`http://localhost:3000/api/v1/products/${productsId}`);
   // }
-  // createproduct(product: Porduct): Observable<Porduct[]> {
-  //   return this.http.post<Porduct[]>('http://localhost:3000/api/v1/products', product)
-  // }
+  createProduct(productData: FormData): Observable<Porduct> {
+    return this.http.post<Porduct>('http://localhost:3000/api/v1/products', productData);
+  }
   // deleteproduct(productsId: string): Observable<any> {
   //   return this.http.delete<any>(`http://localhost:3000/api/v1/products/${productsId}`)
   // }

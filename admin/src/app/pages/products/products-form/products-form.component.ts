@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesService, Category } from 'products/src';
+import { CategoriesService, Category, Porduct, ProductsServices } from 'products/src';
 import { MessageService } from 'primeng/api';
 import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,13 +23,12 @@ export class ProductsFormComponent {
   'imageDisplay': string | ArrayBuffer | null;
   // currentProductId: string;
   // endsubs$: Subject<any> = new Subject();
-
   constructor(
     private formBuilder: FormBuilder,
-    // private productsService: ProductsService,
+    private productsService: ProductsServices,
     private categoriesService: CategoriesService,
-    // private messageService: MessageService,
-    // private location: Location,
+    private messageService: MessageService,
+    private location: Location,
     // private route: ActivatedRoute
   ) {}
 
@@ -66,6 +65,30 @@ export class ProductsFormComponent {
        this.categories = categories;
       });
   }
+
+  private _addProduct(productData: FormData){
+
+    this.productsService.createProduct(productData).subscribe(() => {
+      this.messageService.add(
+        {severity:'success', 
+        summary:'success', 
+        detail:'product created succesfuly'});
+      timer(1000).toPromise().then(() =>{
+        this.location.back();
+      });
+    },
+    ()=>
+    {
+      this.messageService.add(
+        {severity:'error', 
+        summary:'error', 
+        detail:'product not created'});
+    }
+    );
+  }
+
+
+
   onImageUpload(event: any){
     const file = event.target.files[0];
     if(file) {
@@ -77,32 +100,7 @@ export class ProductsFormComponent {
     }
   }
 
-  // private _addProduct(productData: FormData) {
-  //   this.productsService
-  //     .createProduct(productData)
-  //     .pipe(takeUntil(this.endsubs$))
-  //     .subscribe(
-  //       (product: Product) => {
-  //         this.messageService.add({
-  //           severity: 'success',
-  //           summary: 'Success',
-  //           detail: `Product ${product.name} is created!`
-  //         });
-  //         timer(2000)
-  //           .toPromise()
-  //           .then(() => {
-  //             this.location.back();
-  //           });
-  //       },
-  //       () => {
-  //         this.messageService.add({
-  //           severity: 'error',
-  //           summary: 'Error',
-  //           detail: 'Product is not created!'
-  //         });
-  //       }
-  //     );
-  // }
+
 
   // private _updateProduct(productFormData: FormData) {
   //   this.productsService
@@ -160,8 +158,15 @@ export class ProductsFormComponent {
     this.isSubmitted = true;
     if (this.form.invalid) return;
 
-  //   const productFormData = new FormData();
-  //   Object.keys(this.productForm).map((key) => {
+   const productsFormData = new FormData();
+   Object.keys(this.productForm).map((key) => {
+    console.log(key);
+    console.log(this.productForm[key].value);
+    productsFormData.append(key, this.productForm[key].value);
+   });
+   this._addProduct(productsFormData);
+
+   
   //     productFormData.append(key, this.productForm[key].value);
   //   });
   //   if (this.editmode) {
@@ -186,7 +191,7 @@ export class ProductsFormComponent {
   //     fileReader.readAsDataURL(file);
    // }
  }
-
+  
   get productForm() {
     return this.form.controls;
   }

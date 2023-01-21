@@ -123,8 +123,6 @@ const Routes: Routes = [
     CategoriesFormsComponent,
     ProductsListComponent,
     ProductsFormComponent,
-  //  ProductsListComponent,
- //   ProductsFormComponent,
  //   UsersListComponent,
  //   UsersFormComponent,
  //   OrdersListComponent,
