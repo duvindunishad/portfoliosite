@@ -5,7 +5,7 @@
             <div class="p-col-12">
                 <p-toolbar>
                     <div class="p-toolbar-group-left">
-                        <p-button label="Add" icon="pi pi-plus" iconPos="left" routerLink="categories-forms"></p-button>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="left" routerLink="products-form"></p-button>
 
                     </div>
                     <div class="p-toolbar-group-right">
@@ -29,8 +29,8 @@
                             <th>image</th>
                             <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
                             <th pSortableColumn="stock">Stock<p-sortIcon field="stock"></p-sortIcon></th>
-                            <th pSortableColumn="category">Category<p-sortIcon field="category"></p-sortIcon></th>
-                            <th pSortableColumn="dateCreated">Created at<p-sortIcon field="dateCreated"></p-sortIcon></th>
+                            <th pSortableColumn="categories">Category<p-sortIcon field="categories"></p-sortIcon></th>
+                            <th pSortableColumn="created">Created at<p-sortIcon field="created"></p-sortIcon></th>
                             <th></th>
                         </tr>
                     </ng-template>
@@ -38,15 +38,15 @@
                         <tr>
                             <!-- <td>{{categories.id}}</td> -->
                             <td>{{products.name}}</td>
-                            <td>{{products.image}}</td>
+                            <td><img [src]="products.image" style="width: 100%" alt=""></td>
                             <td>{{products.price}}</td>
                             <td>{{products.countInStock}}</td>
-                            <td>{{products.category.name}}</td>
-                            <td>{{products.dateCreated}}</td>
+                            <td>{{products.categories.name}}</td>
+                            <td>{{products.dateCreated | date: 'short'}}</td>
                             <td>
                                 
-                            <!-- 
-                                <p-button 
+                            
+                                <!-- <p-button 
                             (onClick)="deletePorduct(Porduct.id)"
                             styleClass="p-button-danger mr-2" 
                             icon="pi pi-trash" 
@@ -58,8 +58,8 @@
                             styleClass="p-button-error"
                             icon="pi pi-pencil" 
                             >
-                            </p-button> 
-                        -->
+                            </p-button>  -->
+                       
 
                             </td>
                         </tr>

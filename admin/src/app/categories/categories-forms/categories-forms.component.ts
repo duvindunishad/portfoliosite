@@ -58,7 +58,7 @@ export class CategoriesFormsComponent implements OnInit {
 
   private _addCategory(category: Category){
 
-    this.CategoriesService.createCategory(category).subscribe((category) => {
+    this.CategoriesService.createCategory(category).subscribe((response) => {
       this.messageService.add(
         {severity:'success', 
         summary:'success', 
@@ -111,6 +111,10 @@ export class CategoriesFormsComponent implements OnInit {
         detail:'Category not updated'
     });
     })
+  }
+  
+  onCancle() {
+    this.location.back();
   }
   get categoryForm(){
     return this.form.controls;

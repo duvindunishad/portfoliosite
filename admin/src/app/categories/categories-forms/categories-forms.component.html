@@ -6,7 +6,7 @@
                 <p-toolbar><div class="p-toolbar-group-left"></div>
                     <div class="p-toolbar-group-right">
                         <p-button styleClass="p-button-primary mr-2" [label]="editmode ? 'Update':'Create'" icon="pi pi-plus" iconPos="left" (onClick)="onSubmit()" ></p-button>
-                        <p-button styleClass="p-button-secondary" label="Cancle"  iconPos="left" ></p-button>
+                        <p-button styleClass="p-button-secondary" label="Cancle"  iconPos="left" (onClick)="onCancle()" ></p-button>
                     </div>
        <!--                 
                         <p-button styleClass="p-button-primary p-mr-2" [label]="editmode ? 'Update' : 'Create'" icon="pi pi-plus"(click)="onSubmit()"></p-button>
@@ -35,7 +35,7 @@
                                 <small *ngIf="categoryForm['icon'].invalid && isSubmitted" class="p-error">icon is required</small>
                             </div>
                             <div class="p-colorPicker">
-                                <label for="color">Color</label><br><br>
+                                <label for="color">Color</label><br>
                                 <p-colorPicker formControlName="color"></p-colorPicker>
                             </div>
                         </div>

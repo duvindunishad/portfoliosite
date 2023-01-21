@@ -33,9 +33,9 @@ import { CategoriesService } from 'products/src';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 //import { ColorPickerModule } from 'primeng/colorpicker';
-import { InputNumberModule } from 'primeng/inputnumber';
+//import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+//import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
 import { TagModule } from 'primeng/tag';
@@ -53,6 +53,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 const UX_MODULE = [
   CardModule,
@@ -88,11 +90,11 @@ const Routes: Routes = [
     },
     {
       path: 'categories/categories-forms',
-      component: CategoriesListComponent
+      component: CategoriesFormsComponent
     },
     {
       path: 'categories/categories-forms/:id',
-      component: CategoriesListComponent
+      component: CategoriesFormsComponent
     },
 
     {
@@ -100,12 +102,12 @@ const Routes: Routes = [
       component: ProductsListComponent
     },
     {
-      path: 'products/products-forms',
-      component: ProductsListComponent
+      path: 'products/products-form',
+      component: ProductsFormComponent
     },
     {
-      path: 'products/products-forms/:id',
-      component: ProductsListComponent
+      path: 'products/products-form/:id',
+      component: ProductsFormComponent
     }
   ]
  }
