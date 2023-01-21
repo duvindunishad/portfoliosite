@@ -1,5 +1,5 @@
 import { Category } from './category';
-export class Porduct {
+export class Product {
   id?: string;
   name?: string;
   description?: string;
@@ -14,5 +14,5 @@ export class Porduct {
   numReviews?: number;
   isFeatured?: boolean;
   dateCreated?: string;
-  createProduct: any;
+  createProduct: unknown;
   }  

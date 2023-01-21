@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsServices, Porduct } from 'products/src';
+import { ProductsServices, Product } from 'products/src';
 
 @Component({
   selector: 'admin-products-list',
@@ -9,15 +9,15 @@ import { ProductsServices, Porduct } from 'products/src';
 })
 export class ProductsListComponent implements OnInit{
 
-  products: Porduct[] = [];
+  products: Product[] = [];
 
   constructor(
     private productService: ProductsServices
   ) { }
   ngOnInit(): void {
-    this._getProducts();
+    this._getproducts();
   }
-  private _getProducts() {
+  private _getproducts() {
     this.productService.getproducts().subscribe((products) =>{
       this.products = products;
     });

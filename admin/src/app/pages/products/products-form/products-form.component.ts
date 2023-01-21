@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesService, Category, Porduct, ProductsServices } from 'products/src';
+import { CategoriesService, Category, Product, ProductsServices } from 'products/src';
 import { MessageService } from 'primeng/api';
 import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class ProductsFormComponent {
   isSubmitted = false;
   categories: Category[] = []; 
   'imageDisplay': string | ArrayBuffer | null;
+
   // currentProductId: string;
   // endsubs$: Subject<any> = new Subject();
   constructor(
@@ -68,7 +69,7 @@ export class ProductsFormComponent {
 
   private _addProduct(productData: FormData){
 
-    this.productsService.createProduct(productData).subscribe(() => {
+    this.productsService.createProduct(productData).subscribe((product: Product) => {
       this.messageService.add(
         {severity:'success', 
         summary:'success', 
@@ -92,10 +93,12 @@ export class ProductsFormComponent {
   onImageUpload(event: any){
     const file = event.target.files[0];
     if(file) {
+      this.form.patchValue({image: file});
+      this.form.updateValueAndValidity();
       const fileReader = new FileReader();
       fileReader.onload =() =>{
         this.imageDisplay = fileReader.result
-      }
+      };
       fileReader.readAsDataURL(file);
     }
   }
@@ -158,13 +161,13 @@ export class ProductsFormComponent {
     this.isSubmitted = true;
     if (this.form.invalid) return;
 
-   const productsFormData = new FormData();
+   const productFormData = new FormData();
    Object.keys(this.productForm).map((key) => {
     console.log(key);
     console.log(this.productForm[key].value);
-    productsFormData.append(key, this.productForm[key].value);
+    productFormData.append(key, this.productForm[key].value);
    });
-   this._addProduct(productsFormData);
+   this._addProduct(productFormData);
 
    
   //     productFormData.append(key, this.productForm[key].value);
