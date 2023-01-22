@@ -57,6 +57,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { UsersModule } from 'users/src';
 
 const UX_MODULE = [
   CardModule,
@@ -150,6 +151,7 @@ const Routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(Routes, { initialNavigation: 'enabledBlocking' }), UX_MODULE,
+    UsersModule
 
   ],
   providers: [Category, CategoriesService, MessageService,ConfirmationService],
