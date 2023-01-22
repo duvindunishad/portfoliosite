@@ -21,8 +21,7 @@ export class ProductsFormComponent {
   isSubmitted = false;
   categories: Category[] = []; 
   'imageDisplay': string | ArrayBuffer | null;
-
-  // currentProductId: string;
+  'currentProductId': string;
   // endsubs$: Subject<any> = new Subject();
   constructor(
     private formBuilder: FormBuilder,
@@ -30,13 +29,13 @@ export class ProductsFormComponent {
     private categoriesService: CategoriesService,
     private messageService: MessageService,
     private location: Location,
-    // private route: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this._initForm();
     this._getCategories();
-    // this._checkEditMode();
+    this._checkEditMode();
   }
 
   // ngOnDestroy() {
@@ -132,30 +131,30 @@ export class ProductsFormComponent {
   //     );
   // }
 
-  // private _checkEditMode() {
-  //   this.route.params.pipe(takeUntil(this.endsubs$)).subscribe((params) => {
-  //     if (params.id) {
-  //       this.editmode = true;
-  //       this.currentProductId = params.id;
-  //       this.productsService
-  //         .getProduct(params.id)
-  //         .pipe(takeUntil(this.endsubs$))
-  //         .subscribe((product) => {
-  //           this.productForm.name.setValue(product.name);
-  //           this.productForm.category.setValue(product.category.id);
-  //           this.productForm.brand.setValue(product.brand);
-  //           this.productForm.price.setValue(product.price);
-  //           this.productForm.countInStock.setValue(product.countInStock);
-  //           this.productForm.isFeatured.setValue(product.isFeatured);
-  //           this.productForm.description.setValue(product.description);
-  //           this.productForm.richDescription.setValue(product.richDescription);
-  //           this.imageDisplay = product.image;
-  //           this.productForm.image.setValidators([]);
-  //           this.productForm.image.updateValueAndValidity();
-  //         });
-  //     }
-  //   });
-  // }
+  private _checkEditMode() {
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
+        this.editmode = true;
+        this.currentProductId = params['id'];
+        this.productsService
+          .getProduct(params['id'])
+          
+          .subscribe((products) => {
+            this.productForm['name'].setValue(products.name);
+            this.productForm['category'].setValue(products.category);
+            this.productForm['brand'].setValue(products.brand);
+            this.productForm['price'].setValue(products.price);
+            this.productForm['countInStock'].setValue(products.countInStock);
+            this.productForm['isFeatured'].setValue(products.isFeatured);
+            this.productForm['description'].setValue(products.description);
+            this.productForm['richDescription'].setValue(products.richDescription);
+           // this.imageDisplay = products.image;
+            // this.productForm['image'].setValidators([]);
+            // this.productForm['image'].updateValueAndValidity();
+          });
+      }
+    });
+  }
 
   onSubmit() {
     this.isSubmitted = true;

@@ -55,6 +55,8 @@ import { ProductsListComponent } from './pages/products/products-list/products-l
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 
 const UX_MODULE = [
   CardModule,
@@ -108,6 +110,18 @@ const Routes: Routes = [
     {
       path: 'products/products-form/:id',
       component: ProductsFormComponent
+    },
+    {
+      path: 'users',
+      component: UsersListComponent
+    },
+    {
+      path: 'users/users-form',
+      component: UsersFormComponent
+    },
+    {
+      path: 'users/users-form/:id',
+      component: UsersFormComponent
     }
   ]
  }
@@ -123,7 +137,8 @@ const Routes: Routes = [
     CategoriesFormsComponent,
     ProductsListComponent,
     ProductsFormComponent,
- //   UsersListComponent,
+    UsersListComponent,
+    UsersFormComponent
  //   UsersFormComponent,
  //   OrdersListComponent,
  //   OrdersDetailComponent

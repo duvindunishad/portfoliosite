@@ -29,8 +29,8 @@
                             <th>image</th>
                             <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
                             <th pSortableColumn="stock">Stock<p-sortIcon field="stock"></p-sortIcon></th>
-                            <th pSortableColumn="categories">Category<p-sortIcon field="categories"></p-sortIcon></th>
-                            <th pSortableColumn="created">Created at<p-sortIcon field="created"></p-sortIcon></th>
+                            <!-- <th pSortableColumn="categories">Category<p-sortIcon field="categories"></p-sortIcon></th>
+                            <th pSortableColumn="created">Created at<p-sortIcon field="created"></p-sortIcon></th> -->
                             <th></th>
                         </tr>
                     </ng-template>
@@ -41,26 +41,21 @@
                             <td><img [src]="products.image" style="width: 100%" alt=""></td>
                             <td>{{products.price}}</td>
                             <td>{{products.countInStock}}</td>
-                            <td>{{products.categories.name}}</td>
-                            <td>{{products.dateCreated | date: 'short'}}</td>
+                            <!-- <td>{{products.categories.name}}</td>
+                            <td>{{products.dateCreated | date: 'short'}}</td> -->
                             <td>
+                                <p-button 
+                                styleClass="p-button-danger mr-2" 
+                                icon="pi pi-trash" 
+                                >
+                                </p-button> 
                                 
-                            
-                                <!-- <p-button 
-                            (onClick)="deletePorduct(Porduct.id)"
-                            styleClass="p-button-danger mr-2" 
-                            icon="pi pi-trash" 
-                            >
-                            </p-button>
-                            
-                            <p-button 
-                            (onClick)="updatePorduct(Porduct.id)"
-                            styleClass="p-button-error"
-                            icon="pi pi-pencil" 
-                            >
-                            </p-button>  -->
-                       
-
+                                <p-button 
+                                (onClick)="updateProduct(products.id)"
+                                styleClass="p-button-error"
+                                icon="pi pi-pencil" 
+                                >
+                                </p-button>
                             </td>
                         </tr>
                     </ng-template>

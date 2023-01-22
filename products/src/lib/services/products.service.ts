@@ -11,12 +11,12 @@ export class ProductsServices {
   
     constructor(private http: HttpClient) {}
   
-  getproducts(): Observable<Product[]>{
+    getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>('http://localhost:3000/api/v1/products')
   }
-  // getproduct(productsId : string): Observable<Porduct>{
-  //   return this.http.get<Porduct>(`http://localhost:3000/api/v1/products/${productsId}`);
-  // }
+  getProduct(productsId : string): Observable<Product>{
+    return this.http.get<Product>(`http://localhost:3000/api/v1/products/${productsId}`);
+  }
   createProduct(productData: FormData): Observable<Product> {
     return this.http.post<Product>('http://localhost:3000/api/v1/products', productData)
   }
