@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 //import * as fromUsers from './state/users.reducer';
 //import { UsersEffects } from './state/users.effects';
 //import { UsersFacade } from './state/users.facade';
+//import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    //HttpClientModule,
     // StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.reducer),
     // EffectsModule.forFeature([UsersEffects])
   ],

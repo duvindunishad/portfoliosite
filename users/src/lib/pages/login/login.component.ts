@@ -13,7 +13,7 @@ import { User } from '../../models/user';
   styles: []
 })
 export class LoginComponent implements OnInit {
- // loginFormGroup: FormGroup;
+  'formGroup': FormGroup;
   isSubmitted = false;
   authError = false;
   authMessage = 'Email or Password are wrong';
@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
     //   password: this.loginForm.password.value
     // }
     this.authontication.login(this.loginForm.email.value, this.loginForm.password.value).subscribe((User)=>{
-      console.log(User)
+      console.log(User);
+      this.router.navigate(['/'])
     })
     // this.authontication.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
     //   (user: { token: any; }) => {

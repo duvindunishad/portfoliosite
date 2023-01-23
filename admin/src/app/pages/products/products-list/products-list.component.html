@@ -45,6 +45,7 @@
                             <td>{{products.dateCreated | date: 'short'}}</td> -->
                             <td>
                                 <p-button 
+                                (click)="deleteProduct(products.id)"
                                 styleClass="p-button-danger mr-2" 
                                 icon="pi pi-trash" 
                                 >

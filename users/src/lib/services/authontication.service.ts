@@ -30,7 +30,7 @@ updateUser(User: User): Observable<User[]> {
 
 login(email: string, password: string) : Observable<User>
 {
-  return this.http.post<User>('http://localhost:3000/api/v1/login', {email,password})
+  return this.http.post<User>('http://localhost:3000/api/v1/users/login', {email,password})
 }
 
 }

@@ -20,10 +20,10 @@ export class ProductsServices {
   createProduct(productData: FormData): Observable<Product> {
     return this.http.post<Product>('http://localhost:3000/api/v1/products', productData)
   }
-  // deleteproduct(productsId: string): Observable<any> {
-  //   return this.http.delete<any>(`http://localhost:3000/api/v1/products/${productsId}`)
-  // }
-  // updateproduct(product: Porduct): Observable<Porduct[]> {
-  //   return this.http.put<Porduct[]>('http://localhost:3000/api/v1/products/:'+ product['id'], product);
-  // }
+  deleteproduct(productsId: string): Observable<Product> {
+    return this.http.delete<Product>(`http://localhost:3000/api/v1/products/${productsId}`)
+  }
+  updateproduct(product: Product): Observable<Product[]> {
+    return this.http.put<Product[]>('http://localhost:3000/api/v1/products/:'+ product['id'], product);
+  }
 }
