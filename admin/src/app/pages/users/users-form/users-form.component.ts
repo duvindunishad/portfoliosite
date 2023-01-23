@@ -38,7 +38,7 @@ export class UsersFormComponent implements OnInit {
   private _initUserForm() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      password: [''],
+      password: ['',Validators.required],//change here 2023-1-24
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       isAdmin: [false],
