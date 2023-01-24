@@ -5,10 +5,10 @@
     margin-right: 15px;
 
     a {
-      color: var(--surface-500);
+      color: var(--blue-50);
       cursor: pointer;
       &:hover {
-        color: $primary-color;
+        color: var(--surface-900);
       }
     }
   }

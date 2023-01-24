@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { uiModule } from '@portfoliosite/ui';
 import { AccordionModule } from 'primeng/accordion';
+import { NavComponent } from './shared/nav/nav.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
+    NavComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), uiModule, AccordionModule, BrowserAnimationsModule],
   providers: [],

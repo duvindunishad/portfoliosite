@@ -18,7 +18,7 @@ import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Category } from 'products/src';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
 
@@ -57,7 +57,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
-import { UsersModule } from 'users/src';
+import {  JwtInterceptor, UsersModule } from 'users/src';
 
 const UX_MODULE = [
   CardModule,
@@ -82,6 +82,7 @@ const Routes: Routes = [
   { 
   path: '', 
   component: ShellComponent,
+  canActivate: [],
   children: [
     {
       path: 'dashboard',
@@ -154,7 +155,8 @@ const Routes: Routes = [
     UsersModule
 
   ],
-  providers: [Category, CategoriesService, MessageService,ConfirmationService],
+  providers: [Category, CategoriesService, MessageService,ConfirmationService,
+  { provide: HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi:true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

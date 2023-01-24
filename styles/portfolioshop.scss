@@ -1,5 +1,5 @@
 // Base Config
-//@import '~normalize.css/normalize.css';
+@import '~normalize.css/normalize.css';
 @import './base/colors.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
@@ -38,5 +38,5 @@
   width: 1200px;
   padding: 15px;
   margin: 0 auto;
-  background-color: var(--surface-100);
+  background-color: var(--blue-400);
 }
