@@ -14,6 +14,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
 
 
+
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'product', component: ProductListComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     NavComponent,
+   
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), uiModule, AccordionModule, BrowserAnimationsModule],
   providers: [],
