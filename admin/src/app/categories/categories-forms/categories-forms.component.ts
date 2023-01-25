@@ -98,7 +98,7 @@ export class CategoriesFormsComponent implements OnInit {
         {severity:'success', 
         summary:'success', 
         detail:'Category update succesfuly'});
-      timer(2000).toPromise().then((done) =>{
+      timer(1000).toPromise().then((done) =>{
         this.location.back();
       });
       //have to build
