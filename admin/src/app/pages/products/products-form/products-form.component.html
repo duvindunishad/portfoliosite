@@ -77,23 +77,21 @@
                                   >Description is required</small
                                 >
                               </div>
-                              <div class="p-field col-12">
+                              <!-- <div class="p-field col-12">
                                 <label for="richDescription">richDescription</label><br />
                                 <textarea
                                   pInputTextarea
                                   formControlName="richDescription"
                                   [rows]="7"
                                   [cols]="30"
-                                ></textarea>
+                                ></textarea> -->
+                                <div class="p-field col-12">
+                                  <label for="richDescription">Product Details</label><br />
+                                  <p-editor formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
                                 <small *ngIf="productForm['richDescription'].invalid && isSubmitted" class="p-error"
                                   >Description is required</small
-                                >
+                                >           
                               </div>
-                              <!-- <div class="p-field col">
-                                <label for="richDescription">Product Details</label><br />
-                                <p-editor formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
-
-                              </div> -->
                               <div class="p-field p-col-12">
                                 <label for="name">Main Image</label>
                                 <input

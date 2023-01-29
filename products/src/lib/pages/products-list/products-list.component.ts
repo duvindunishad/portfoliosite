@@ -6,7 +6,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { ProductsServices } from '../../services/products.service';
 
 @Component({
-  selector: 'products-list',
+  selector: 'portfoliosite-products-list',
   templateUrl: './products-list.component.html',
   styles: []
 })
@@ -20,7 +20,7 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private prodService: ProductsServices,
     private catService: CategoriesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {

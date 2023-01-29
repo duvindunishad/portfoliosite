@@ -5,7 +5,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { __values } from 'tslib';
 
 @Component({
-  selector: 'products-categories-banner',
+  selector: 'portfoliosite-products-categories-banner',
   templateUrl: './categories-banner.component.html',
   styles: [
   ]
