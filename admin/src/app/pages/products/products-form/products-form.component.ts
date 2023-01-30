@@ -47,9 +47,9 @@ export class ProductsFormComponent {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       brand: ['', Validators.required],
-      price: ['', Validators.required],
+     // price: ['', Validators.required],
       category: ['', Validators.required],
-      countInStock: ['', Validators.required],
+     // countInStock: ['', Validators.required],
       description: ['', Validators.required],
       richDescription: [''],
       image: ['', Validators.required],
@@ -112,8 +112,8 @@ export class ProductsFormComponent {
             this.productForm['name'].setValue(products.name);
             this.productForm['category'].setValue(products.category);
             this.productForm['brand'].setValue(products.brand);
-            this.productForm['price'].setValue(products.price);
-            this.productForm['countInStock'].setValue(products.countInStock);
+           // this.productForm['price'].setValue(products.price);
+           // this.productForm['countInStock'].setValue(products.countInStock);
             this.productForm['isFeatured'].setValue(products.isFeatured);
             this.productForm['description'].setValue(products.description);
             this.productForm['richDescription'].setValue(products.richDescription);

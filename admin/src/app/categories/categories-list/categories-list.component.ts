@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService, Category } from 'products/src';
 import { Router } from '@angular/router';
-//import { CategoriesService } from '../../../../../products/src/lib/services/categories.service';
 import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
