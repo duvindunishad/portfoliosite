@@ -87,8 +87,6 @@ export class ProductsFormComponent {
     );
   }
 
-
-
   onImageUpload(event: any){
     const file = event.target.files[0];
     if(file) {
@@ -101,35 +99,6 @@ export class ProductsFormComponent {
       fileReader.readAsDataURL(file);
     }
   }
-
-
-
-  // private _updateProduct(productFormData: FormData) {
-  //   this.productsService
-  //     .updateProduct(productFormData, this.currentProductId)
-  //     .pipe(takeUntil(this.endsubs$))
-  //     .subscribe(
-  //       () => {
-  //         this.messageService.add({
-  //           severity: 'success',
-  //           summary: 'Success',
-  //           detail: 'Product is updated!'
-  //         });
-  //         timer(2000)
-  //           .toPromise()
-  //           .then(() => {
-  //             this.location.back();
-  //           });
-  //       },
-  //       () => {
-  //         this.messageService.add({
-  //           severity: 'error',
-  //           summary: 'Error',
-  //           detail: 'Product is not updated!'
-  //         });
-  //       }
-  //     );
-  // }
 
   private _checkEditMode() {
     this.route.params.subscribe((params) => {
@@ -149,8 +118,8 @@ export class ProductsFormComponent {
             this.productForm['description'].setValue(products.description);
             this.productForm['richDescription'].setValue(products.richDescription);
            // this.imageDisplay = products.image;
-            // this.productForm['image'].setValidators([]);
-            // this.productForm['image'].updateValueAndValidity();
+             this.productForm['image'].setValidators([]);
+             this.productForm['image'].updateValueAndValidity();
           });
       }
     });
@@ -168,30 +137,6 @@ export class ProductsFormComponent {
    });
    this._addProduct(productFormData);
 
-   
-  //     productFormData.append(key, this.productForm[key].value);
-  //   });
-  //   if (this.editmode) {
-  //     this._updateProduct(productFormData);
-  //   } else {
-  //     this._addProduct(productFormData);
-  //   }
-  // }
-  // onCancle() {
-  //   this.location.back();
-  // }
-
-  //onImageUpload(event) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     this.form.patchValue({ image: file });
-  //     this.form.get('image').updateValueAndValidity();
-  //     const fileReader = new FileReader();
-  //     fileReader.onload = () => {
-  //       this.imageDisplay = fileReader.result;
-  //     };
-  //     fileReader.readAsDataURL(file);
-   // }
  }
   
   get productForm() {

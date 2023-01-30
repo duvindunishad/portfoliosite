@@ -29,7 +29,7 @@ const routes: Routes = [
     NavComponent,
    
   ],
-  imports: [HttpClientModule,BrowserModule, RouterModule.forRoot(routes), uiModule, AccordionModule, BrowserAnimationsModule,ProductsModule],
+  imports: [HttpClientModule,BrowserModule, RouterModule.forRoot(routes), uiModule, AccordionModule, BrowserAnimationsModule, ProductsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

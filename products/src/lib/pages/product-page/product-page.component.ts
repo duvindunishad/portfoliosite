@@ -17,6 +17,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   'quantity': number;
 images: any;
 any: any;
+selectedImageUrl: any;
+
 
   constructor(private prodService: ProductsServices, private route: ActivatedRoute) {}
 

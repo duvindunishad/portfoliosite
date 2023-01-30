@@ -1,9 +1,8 @@
 <div class="product-page" *ngIf="product">
     <div class="grid">
-      <div class="col-6">
+      <div class="col-12">
         <ui-gallery  [images]="product.images" ></ui-gallery>
-
-
+       
       </div>
       <div class="col-6 product">
         <h2 class="product-name">{{ product.name }}</h2>
@@ -13,10 +12,9 @@
         <!-- <div class="product-rating">
           <p-rating [(ngModel)]="product.rating" [cancel]="false" [disabled]="true"></p-rating>
         </div> -->
-        <div class="product-price">
+        <!-- <div class="product-price">
           {{ product.price | currency }}
-          <!-- <span class="price-before">{{ product.price + 18 | currency }}</span> -->
-        </div>
+          </div> -->
         <!-- <div class="product-quantity">
           <div class="p-field p-col-12 p-md-3 p-p-0">
             <label for="quantity">Quantity</label>
@@ -33,21 +31,22 @@
         </div> -->
         <br>
         <div class="product-actions">
-          <button
+          <button 
             pButton
             pRipple
             type="button"
             label="Contact"
             class="p-button-rounded mr-2"
-          ></button>
-          <button
+            onClick="window.open('http://localhost:3001/')">
+          </button>
+          <!-- <button
             pButton
             pRipple
             type="button"
             label="Save"
             class="p-button-rounded"
             (onClick)="addProductToCart()"
-          ></button>
+          ></button> -->
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ export class ProductsServices {
     return this.http.put<Product[]>('http://localhost:3000/api/v1/products/:'+ product['id'], product);
   }
   getFeaturedProducts(count:number): Observable<Product[]>{
-    return this.http.get<Product[]>('http://localhost:3000/api/v1/products/get/featured/:count')
+    return this.http.get<Product[]>('http://localhost:3000/api/v1/products/get/featured/:count');
  
   }
 }
