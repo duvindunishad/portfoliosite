@@ -1,7 +1,7 @@
 <div class="products-page">
     <div class="grid">
       <!--close the category-->
-      <div class="col-0.5" *ngIf="!isCategoryPage">
+      <div class="col-1" *ngIf="!isCategoryPage">
         <!-- <h4>Categories</h4>
         <div class="field-checkbox" *ngFor="let category of categories">
           <p-checkbox
@@ -12,7 +12,7 @@
           <label for="{{ category.id }}">{{ category.name }}</label>
         </div> -->
       </div>
-      <div [ngClass]="{ 'col-11.5': !isCategoryPage, 'col-12': isCategoryPage }">
+      <div [ngClass]="{ 'col-10': !isCategoryPage, 'col-12': isCategoryPage }">
         <div class="grid" *ngIf="products">
           <div [ngClass]="{ 'col-3': !isCategoryPage, 'col-4': isCategoryPage }" *ngFor="let product of products">
             <portfoliosite-products-product-item [product]="product"></portfoliosite-products-product-item>

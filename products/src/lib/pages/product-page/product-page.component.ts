@@ -35,7 +35,7 @@ selectedImageUrl: any;
     this.endSubs$.complete();
   }
 
-  addProductToCart() {}
+  
 
   private _getProduct(id: string) {
     this.prodService
